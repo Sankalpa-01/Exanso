@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
+import DepartmentView from "./components/DepartmentView";
 import Contact from "./pages/Contact"; 
 import HeatExchanger from "./components/experiments/HeatExchanger";
 
@@ -27,6 +28,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Auth />} />
               <Route path="/contact" element={<Contact />} />{" "}
+              <Route path="/department/:deptId" element={<DepartmentView />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route
                 path="/experiment/heat-exchanger"

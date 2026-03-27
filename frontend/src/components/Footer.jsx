@@ -53,7 +53,7 @@ const Footer = () => {
           {/* Logo: Keeping the white box, but the "E" now matches the dark footer background */}
           <Link to="/" className="flex items-center space-x-3 mb-6 group">
             <div className="w-8 h-8 bg-white rounded-md flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shadow-lg">
-              <span className="text-[#050B14] font-extrabold text-lg leading-none">E</span>
+              <span className="text-[#050B14] font-extrabold text-lg leading-none">Ex</span>
             </div>
             <span className="text-2xl font-bold text-white tracking-wide">
               Exanso

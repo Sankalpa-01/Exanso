@@ -20,7 +20,7 @@ const Navbar = () => {
         {/* Logo Area */}
         <Link to="/" className="flex items-center space-x-3 group">
           <div className="w-8 h-8 bg-[#0039A6] rounded-md flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shadow-lg shadow-blue-900/20">
-            <span className="text-white font-bold text-lg leading-none">E</span>
+            <span className="text-white font-bold text-lg leading-none">Ex</span>
           </div>
           <span className="text-xl font-bold text-white tracking-wide">
             Exanso
