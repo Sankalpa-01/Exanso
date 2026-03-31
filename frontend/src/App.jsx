@@ -13,7 +13,7 @@ import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import DepartmentView from "./components/DepartmentView";
 import Contact from "./pages/Contact"; 
-import HeatExchanger from "./components/experiments/HeatExchanger";
+import ExperimentLayout from "./components/ExperimentLayout";
 
 function App() {
   return (
@@ -30,10 +30,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />{" "}
               <Route path="/department/:deptId" element={<DepartmentView />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route
-                path="/experiment/heat-exchanger"
-                element={<HeatExchanger />}
-              />
+              <Route path="/experiment/:experimentId" element={<ExperimentLayout />} />
             </Routes>
           </main>
 
