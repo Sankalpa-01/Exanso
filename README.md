@@ -10,8 +10,6 @@
 * **Dynamic Visualizers:** Features animated, CSS-driven cross-sectional visualizers (like the concentric double-pipe flow) tailored to specific experiments.
 * **Premium UI/UX:** Built with a deep blue-to-black gradient theme, glassmorphism, custom scrollbars, and fluid animations for an immersive, modern experience.
 
----
-
 ## Tech Stack
 
 **Frontend**
@@ -22,8 +20,6 @@
 * **Icons:** Lucide React
 * **API Client:** Axios
 * **Notifications:** Sonner
-
----
 
 ## Project Structure
 
@@ -48,7 +44,6 @@ Exanso/
 ```
 
 ## Installation & Setup
-
 ### 1. Frontend Setup
 ``` bash
 cd frontend
