@@ -2,7 +2,7 @@
 
 **Exanso** is a next-generation, data-driven virtual laboratory platform designed to bridge the gap between theoretical engineering physics and real-world AI predictions. Built with a premium "Cyber Blue" Web3-inspired aesthetic, the platform allows engineering students and professionals to run complex Sim-to-Real comparisons using trained Machine Learning models.
 
-## ✨ Key Features
+## Key Features
 
 * **Data-Driven Architecture:** Easily scale from 1 to 100+ experiments without altering core UI code. Experiments are managed via simple configuration files and a central registry pattern.
 * **Sim-to-Real AI Engine:** Compares theoretical physics formulas against real-world trained AI models (e.g., Random Forest) for advanced error analysis.
@@ -12,7 +12,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 **Frontend**
 * **Framework:** React.js (via Vite)
@@ -25,7 +25,7 @@
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 The project is divided into two distinct environments: the React frontend and the FastAPI backend.
 
