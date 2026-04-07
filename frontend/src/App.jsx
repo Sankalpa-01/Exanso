@@ -14,6 +14,7 @@ import Dashboard from "./pages/Dashboard";
 import DepartmentView from "./components/DepartmentView";
 import Contact from "./pages/Contact"; 
 import ExperimentLayout from "./components/ExperimentLayout";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
               <Route path="/department/:deptId" element={<DepartmentView />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/experiment/:experimentId" element={<ExperimentLayout />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </main>
 

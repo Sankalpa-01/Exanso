@@ -26,9 +26,9 @@ app = FastAPI(
 # to send data and tokens to this backend (port 8000).
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"], 
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"], # Your React frontend URL
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["*"], # Allows POST, GET, OPTIONS, etc.
     allow_headers=["*"],
 )
 
