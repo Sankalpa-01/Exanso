@@ -1,0 +1,26 @@
+# Security (Crucial: NEVER upload your .env file!)
+.env
+
+# Database Files
+*.db
+*.sqlite
+*.sqlite3
+
+# Virtual Environments
+venv/
+env/
+.venv/
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Machine Learning / Jupyter (Optional)
+.ipynb_checkpoints/
+# Note: If your trained model .pkl files get massive (e.g., >100MB), 
+# you should ignore them here and use Git LFS instead.
+
+# OS Generated Files
+.DS_Store
+Thumbs.db

@@ -1,34 +1,73 @@
-import joblib
-import os
+# import joblib
+# import os
+# import warnings
 
-# 1. Build the absolute path to your .pkl file safely
-# This ensures it works no matter where you run the server from
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "trained_models", "random_forest.pkl")  # <-- Change this to your exact file name!
+# # Suppress sklearn warnings about feature names if they pop up
+# warnings.filterwarnings("ignore", category=UserWarning)
 
-# 2. Load the model ONCE when the FastAPI server boots up
-try:
-    heat_exchanger_model = joblib.load(MODEL_PATH)
-    print("✅ ML Model loaded successfully!")
-except Exception as e:
-    print(f"❌ Failed to load ML model: {e}")
-    heat_exchanger_model = None
+# # 1. Build the absolute paths to both files
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# MODEL_PATH = os.path.join(BASE_DIR, "trained_models", "thermal_model.pkl")
+# SCALER_PATH = os.path.join(BASE_DIR, "trained_models", "thermal_scaler.pkl")
+
+# # 2. Load both the Model and the Scaler ONCE when FastAPI boots up
+# try:
+#     heat_exchanger_model = joblib.load(MODEL_PATH)
+#     heat_exchanger_scaler = joblib.load(SCALER_PATH)
+#     print("✅ ML Model and Scaler loaded successfully!")
+# except Exception as e:
+#     print(f"❌ Failed to load ML files: {e}")
+#     heat_exchanger_model = None
+#     heat_exchanger_scaler = None
+
+# def predict_ml_th_out(th_in: float, tc_in: float, m_h: float, m_c: float) -> float:
+#     """
+#     Scales the 4 inputs using the trained scaler, feeds them into the .pkl model, 
+#     and returns the prediction.
+#     """
+#     # Safety check
+#     if heat_exchanger_model is None or heat_exchanger_scaler is None:
+#         raise ValueError("Machine Learning model or scaler is not loaded.")
+
+#     # 3. Format the raw inputs into a 2D array
+#     # WARNING: The order here MUST exactly match the column order you used during training!
+#     raw_features = [[th_in, tc_in, m_h, m_c]]
+    
+#     # 4. Transform the raw inputs using your scaler
+#     scaled_features = heat_exchanger_scaler.transform(raw_features)
+    
+#     # 5. Make the prediction using the scaled features
+#     prediction = heat_exchanger_model.predict(scaled_features)[0]
+    
+#     return round(float(prediction), 2)
+
+import warnings
+from engine.model_loader import get_model
+
+warnings.filterwarnings("ignore", category=UserWarning)
 
 def predict_ml_th_out(th_in: float, tc_in: float, m_h: float, m_c: float) -> float:
     """
-    Feeds the 4 inputs into the trained .pkl model and returns the prediction.
+    Scales the 4 inputs using the trained scaler, feeds them into the .pkl model, 
+    and returns the prediction. Uses lazy-loading to save server RAM.
     """
-    # Safety check in case the file is missing
-    if heat_exchanger_model is None:
-        raise ValueError("Machine Learning model is not loaded.")
-
-    # 3. Format the inputs exactly how the model expects them
-    # WARNING: The order of these variables MUST perfectly match 
-    # the column order of the dataframe you used to train the model!
-    input_features = [[th_in, tc_in, m_h, m_c]]
     
-    # 4. Make the prediction
-    # .predict() returns an array like [45.2], so we grab the first item [0]
-    prediction = heat_exchanger_model.predict(input_features)[0]
+    # 1. Ask the model_loader for your specific files
+    # It will look inside: engine/trained_models/heat_exchanger/
+    model = get_model("heat_exchanger", "thermal_model.pkl")
+    scaler = get_model("heat_exchanger", "thermal_scaler.pkl")
+    
+    # Safety check
+    if model is None or scaler is None:
+        raise ValueError("Machine Learning model or scaler is missing. Check your trained_models folder.")
+
+    # 2. Format the raw inputs exactly how the model expects them
+    raw_features = [[th_in, tc_in, m_h, m_c]]
+    
+    # 3. Transform the raw inputs using your scaler
+    scaled_features = scaler.transform(raw_features)
+    
+    # 4. Make the prediction using the scaled features
+    prediction = model.predict(scaled_features)[0]
     
     return round(float(prediction), 2)
