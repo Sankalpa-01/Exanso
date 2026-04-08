@@ -5,6 +5,7 @@ from pydantic import BaseModel, EmailStr
 # ---------------------------------------------------------
 class UserCreate(BaseModel):
     """Data required from the frontend when a user signs up."""
+    name: str
     email: EmailStr  # EmailStr automatically validates that it has an '@' and a domain
     password: str
 
@@ -16,6 +17,7 @@ class UserResponse(BaseModel):
     id: int
     email: EmailStr
     is_active: bool
+    profile_pic: str | None = None
 
     class Config:
         # This tells Pydantic to read the data even if it's an SQLAlchemy database object

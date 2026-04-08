@@ -23,7 +23,7 @@ def register_user(user: UserCreate, db: Session = Depends(get_db)):
     hashed_pw = get_password_hash(user.password)
     
     # 3. Create and save the new user
-    new_user = User(email=user.email, hashed_password=hashed_pw)
+    new_user = User(name=user.name, email=user.email, hashed_password=hashed_pw)
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
