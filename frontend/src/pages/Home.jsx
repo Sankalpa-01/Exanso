@@ -789,7 +789,7 @@ const HowItWorksSection = () => (
           {
             icon: Activity,
             title: "Model Inference",
-            text: "Random Forest algorithms predict real-world outcomes.",
+            text: "ML algorithms predict real-world outcomes.",
           },
           {
             icon: CheckCircle2,

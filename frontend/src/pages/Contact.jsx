@@ -155,7 +155,7 @@ const Contact = () => {
               Let's start the <br /> conversation.
             </h1>
             <p className="text-lg text-blue-100/80 font-light leading-relaxed max-w-md">
-              Have questions about the platform or want to request a demo for your department? Our team at NIT Rourkela is here to help.
+              Have questions about the platform or want to request a demo for your experiment? Our team of Exanso is here to help.
             </p>
           </div>
 
@@ -169,8 +169,7 @@ const Contact = () => {
                 <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Office</h4>
                 <p className="text-blue-50 font-light leading-relaxed">
                   Dept. of Mechanical Engineering<br />
-                  NIT Rourkela, Jindal Colony,<br />
-                  Odisha 769001
+                  NIT Rourkela, Odisha 769001
                 </p>
               </div>
             </div>
@@ -182,7 +181,7 @@ const Contact = () => {
               </div>
               <div>
                 <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Email</h4>
-                <p className="text-blue-50 font-light">research@exanso.edu</p>
+                <p className="text-blue-50 font-light">contact.exanso@gmail.com</p>
               </div>
             </div>
 
@@ -193,7 +192,7 @@ const Contact = () => {
               </div>
               <div>
                 <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Phone</h4>
-                <p className="text-blue-50 font-light">+91 98765 43210</p>
+                <p className="text-blue-50 font-light">+91 9348049041</p>
               </div>
             </div>
           </div>
