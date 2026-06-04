@@ -1,5 +1,5 @@
-from pydantic import BaseModel
 from typing import List, Optional, Dict
+from pydantic import BaseModel
 
 # ---------------------------------------------------------
 # Experiment 1: Heat Exchanger
@@ -19,10 +19,15 @@ class BatchRequest(BaseModel):
 # ---------------------------------------------------------
 # Standardized Output
 # ---------------------------------------------------------
+class MLOutput(BaseModel):
+    """Explicitly defines the ML output structure."""
+    th_out: float
+    tc_out: float 
+
 class PredictionResult(BaseModel):
     """The finalized format sent back to populate your React data tables."""
     input: Dict[str, float]
-    ml_out: Dict[str, float]
+    ml_out: MLOutput
     analytical_out: Dict[str, float]
     error: float
 
