@@ -8,7 +8,7 @@ from database import engine, Base
 from models import user, experiment
 
 # 2. Import all your Routers
-from api.routers import auth_router, users_router, heat_exchanger
+from api.routers import auth_router, users_router, heat_exchanger, pressure_drop
 from fastapi.staticfiles import StaticFiles
 
 # 3. Auto-Create the Database Tables
@@ -45,6 +45,7 @@ app.add_middleware(
 app.include_router(auth_router.router, prefix="/auth")
 app.include_router(users_router.router, prefix="/users")
 app.include_router(heat_exchanger.router, prefix="/predict/heat-exchanger")
+app.include_router(pressure_drop.router, prefix="/predict/pressure-drop")
 
 # 7. Root Health Check Route
 @app.get("/", tags=["System"])

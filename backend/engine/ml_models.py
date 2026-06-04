@@ -72,6 +72,7 @@ from typing import Dict
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
+# Heat Exchanger Prediction
 def predict_ml_heat_exchanger(th_in: float, tc_in: float, m_h: float, m_c: float) -> Dict[str, float]:
     """
     Scales inputs, predicts both Th_out and Tc_out, and returns them as a dictionary.
@@ -100,3 +101,30 @@ def predict_ml_heat_exchanger(th_in: float, tc_in: float, m_h: float, m_c: float
         "th_out": round(th_out, 2),
         "tc_out": round(tc_out, 2)
     }
+
+# Pressure Drop Prediction
+def predict_ml_pressure_drop(t_c: float, d_h: float, v: float, re: float) -> float:
+    """
+    Scales inputs, predicts Pressure Drop, and returns it.
+    """
+    # 1. Load model and scaler
+    model = get_model("pressure_drop", "pressure_model.pkl")
+    scaler = get_model("pressure_drop", "pressure_scaler.pkl")
+    
+    if model is None or scaler is None:
+        raise ValueError("Pressure Drop ML model or scaler is missing.")
+
+    # 2. Format inputs (MUST match the order used during training!)
+    raw_features = [[t_c, d_h, v, re]]
+    
+    # 3. Transform and Predict
+    scaled_features = scaler.transform(raw_features)
+    prediction = model.predict(scaled_features) 
+    
+    # Extract the single predicted value
+    try:
+        final_val = prediction.item()
+    except ValueError:
+        final_val = prediction.flatten()[0]
+        
+    return round(float(final_val), 2)

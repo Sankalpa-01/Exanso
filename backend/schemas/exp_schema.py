@@ -16,9 +16,6 @@ class BatchRequest(BaseModel):
     """The structure for an array of manual data entries sent from the UI."""
     data: List[HeatExchangerInput]
 
-# ---------------------------------------------------------
-# Standardized Output
-# ---------------------------------------------------------
 class MLOutput(BaseModel):
     """Explicitly defines the ML output structure."""
     th_out: float
@@ -32,12 +29,20 @@ class PredictionResult(BaseModel):
     error: float
 
 # ---------------------------------------------------------
-# Future Experiments (Example)
+# Experiment 2: Pressure Drop
 # ---------------------------------------------------------
-# class BernoulliInput(BaseModel):
-#     pressure: float
-#     density: float
-#     height: float
-#
-# class BernoulliBatchRequest(BaseModel):
-#     data: List[BernoulliInput]
+
+class PressureDropInput(BaseModel):
+    """The exact columns expected from the React frontend or Excel upload."""
+    id: Optional[str] = None
+    Temperature_C: float
+    Hydraulic_Diameter_m: float
+    Velocity_m_s: float
+    Reynolds_Number: float
+
+class PressureDropBatchRequest(BaseModel):
+    data: List[PressureDropInput]
+
+class PressureDropMLOutput(BaseModel):
+    """Explicitly defines the ML output structure for Pressure Drop."""
+    pressure_drop: float
