@@ -1,8 +1,7 @@
-// src/data/experiments/index.js
 import { heatExchangerData } from "./heat-exchanger";
-// import { bernoulliData } from "./bernoulli"; (Future example)
+import { pressureDropData } from "./pressure-drop";
 
 export const experimentRegistry = {
   "heat-exchanger": heatExchangerData,
-  // "bernoulli": bernoulliData,
+  "pressure-drop": pressureDropData,
 };

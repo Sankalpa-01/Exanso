@@ -815,6 +815,14 @@ const experimentsData = {
       icon: Activity,
     },
     {
+      id: "pressure-drop",
+      title: "Fluid Pressure Drop",
+      description: "Analyze flow regimes and pressure loss against theoretical Darcy-Weisbach calculations.",
+      link: "/experiment/pressure-drop",
+      status: "Active",
+      icon: Activity, // You can use 'Activity' or import 'Droplet' from lucide-react if you prefer!
+    },
+    {
       id: "tensile-test",
       title: "Tensile Stress Test",
       description: "Predict yield strength and failure points for Aluminum 6061 samples.",

@@ -1,5 +1,3 @@
-// src/data/experiments/heat-exchanger.js
-
 export const heatExchangerData = {
   id: "heat-exchanger",
   module: "Mechanical Engineering • Module 01",
